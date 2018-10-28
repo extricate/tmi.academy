@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contact extends Model
 {
+    protected $fillable = [
+        'name',
+        'email',
+        'phone'
+    ];
+
     use SoftDeletes;
 
     public function quotes() {

@@ -15,8 +15,15 @@ class CreateQuotesTable extends Migration
     {
         Schema::create('quotes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('total_value')->nullable();
-            $table->integer('students');
+            $table->integer('total_price')->nullable();
+            $table->integer('students')->nullable();
+            $table->longText('comment')->nullable();
+
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products');
+
+            $table->integer('contact_id')->unsigned();
+            $table->foreign('contact_id')->references('id')->on('contacts');
 
             $table->timestamps();
             $table->softDeletes();

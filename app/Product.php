@@ -14,7 +14,8 @@ class Product extends Model
         'created_at',
         'updated_at'
     ];
+
     public function quotes() {
-        return $this->belongsToMany(Quote::class);
+        return $this->hasMany(Quote::class);
     }
 }

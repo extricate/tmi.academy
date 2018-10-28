@@ -16,8 +16,11 @@ class CreatePackagesTable extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('base_price');
-            $table->integer('unit_price');
+            $table->string('slug')->nullable();
+            $table->longText('description')->nullable();
+
+            $table->integer('base_price')->nullable();
+            $table->integer('unit_price')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

@@ -40,31 +40,42 @@ class QuoteController extends Controller
     {
         // validate the form data
         $validated = $request->validate([
-            'product' => 'exists:products',
-            'packages' => 'array|min:1',
+            'product' => 'required|exists:products',
+            'product.required' => 'Je bent vergeten een product te selecteren!',
+            'packages' => 'required|array|min:1',
             'packages.*' => 'exists:packages|distinct',
+            'packages.required' => 'Je bent vergeten een of meerdere pakketten te selecteren!',
+            'name' => 'string|required',
+            'name.required' => 'We willen graag weten hoe we je kunnen noemen',
             'email' => 'required_unless:phone|email',
             'phone' => 'required_unless:email|numeric|min:9|max:13',
             'students' => 'required:min:25|max:5000',
+            'students.required' => 'Je bent vergeten een hoeveelheid studenten te selecteren!',
+            'comment' => 'nullable|max:4000'
         ]);
+
+        // create a new contact before we can create the quote
+        $contact = new Contact([
+            'name' => $validated->name,
+            'email' => $validated->email,
+            'phone' => $validated->phone
+        ]);
+
+        // create the new quote
+        $quote = new Quote([$validated->all(), 'contact_id' => $contact->id]);
 
         /**
          * Calculate the actual value of the quote
          */
 
-        // first we calculate the total price based on the product and students
-        $total_price = $validated->product->base_price + ($validated->product->unit_price * $validated->students);
+        $quote->total_price = $quote->calculateValue();
+        $quote->save();
 
-        // then we add the package prices to the total price
-        foreach ($validated->packages as $package) {
-            $total_price = $total_price + $package->base_price + ($package->unit_price * $validated->students);
-        }
-
-        // fire event that performs logic in the background
+        // fire event that performs additional logic in the background
         event(new NewQuote($validated));
 
         // return
-        return $total_price;
+        return compact(['quote', 'contact']);
     }
 
     /**
