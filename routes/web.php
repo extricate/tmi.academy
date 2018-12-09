@@ -26,3 +26,6 @@ Route::get('/mails', function () {
 
     return new App\Mail\NewQuote($quote);
 });
+
+Route::resource('/toestemming', 'ConsentController');
+//Route::get('/toestemming', 'ConsentController');
