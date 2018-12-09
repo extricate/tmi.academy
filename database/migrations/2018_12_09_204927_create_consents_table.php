@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConsentTable extends Migration
+class CreateConsentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateConsentTable extends Migration
      */
     public function up()
     {
-        Schema::create('consent', function (Blueprint $table) {
+        Schema::create('consents', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('status')->default(1);
             $table->boolean('given')->default(false);
@@ -32,6 +32,6 @@ class CreateConsentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('consent');
+        Schema::dropIfExists('consents');
     }
 }

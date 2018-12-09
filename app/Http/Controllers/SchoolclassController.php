@@ -41,7 +41,7 @@ class SchoolclassController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \TMI.academy\Schoolclass  $schoolclass
+     * @param  \App\Schoolclass  $schoolclass
      * @return \Illuminate\Http\Response
      */
     public function show(Schoolclass $schoolclass)
@@ -52,7 +52,7 @@ class SchoolclassController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \TMI.academy\Schoolclass  $schoolclass
+     * @param  \App\Schoolclass  $schoolclass
      * @return \Illuminate\Http\Response
      */
     public function edit(Schoolclass $schoolclass)
@@ -64,7 +64,7 @@ class SchoolclassController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \TMI.academy\Schoolclass  $schoolclass
+     * @param  \App\Schoolclass  $schoolclass
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Schoolclass $schoolclass)
@@ -75,7 +75,7 @@ class SchoolclassController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \TMI.academy\Schoolclass  $schoolclass
+     * @param  \App\Schoolclass  $schoolclass
      * @return \Illuminate\Http\Response
      */
     public function destroy(Schoolclass $schoolclass)

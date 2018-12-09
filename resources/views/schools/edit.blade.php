@@ -1,0 +1,1 @@
+Je bent {{ $school->name }} aan het bewerken

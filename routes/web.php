@@ -20,12 +20,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/offerte', 'QuoteController');
+Route::resource('/toestemming', 'ConsentController');
+Route::get('/schools/{slug}', 'SchoolController@show');
+Route::resource('/schools', 'SchoolController');
 
 Route::get('/mails', function () {
     $quote = \App\Quote::first();
 
     return new App\Mail\NewQuote($quote);
 });
-
-Route::resource('/toestemming', 'ConsentController');
-//Route::get('/toestemming', 'ConsentController');

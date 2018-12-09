@@ -17,8 +17,11 @@ class AddForeignConstraintsToStudentsTable extends Migration
             $table->integer('schoolclass_id')->unsigned();
             $table->foreign('schoolclass_id')->references('id')->on('schoolclasses')->onDelete('CASCADE');
 
-            //$table->integer('school_id')->unsigned();
-            //$table->foreign('school_id')->references('íd')->on('schools')->onDelete('CASCADE');
+            // $table->integer('school_id')->unsigned();
+            // $table->foreign('school_id')->references('íd')->on('schools')->onDelete('CASCADE');
+
+            $table->integer('consent_id')->unsigned()->nullable();
+            $table->foreign('consent_id')->references('id')->on('consents');
         });
     }
 

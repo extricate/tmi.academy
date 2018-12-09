@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Consent;
+use App\School;
 use Illuminate\Http\Request;
 
 class ConsentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        //$this->middleware(['auth', 'admin']);
     }
 
     /**
@@ -19,8 +20,8 @@ class ConsentController extends Controller
      */
     public function index()
     {
-        $consent = Consent::paginate(25);
-        return view('consent.index', compact('consent'));
+        $consents = Consent::paginate(25);
+        return view('consent.index', compact('consents'));
     }
 
     /**
@@ -30,7 +31,12 @@ class ConsentController extends Controller
      */
     public function create()
     {
-        //
+        // 1. We create a school and the corresponding classes with all students that are going to participate
+        // 2. We prepare a consent batch for every student that will participate
+        // 3. We create the ondertekenen.nl batches and await consent
+
+        $schools = School::all();
+        return view('consent.create', compact('schools'));
     }
 
     /**
@@ -47,7 +53,7 @@ class ConsentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \TMI.academy\Consent  $consent
+     * @param  \App\Consent  $consent
      * @return \Illuminate\Http\Response
      */
     public function show(Consent $consent)
@@ -58,7 +64,7 @@ class ConsentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \TMI.academy\Consent  $consent
+     * @param  \App\Consent  $consent
      * @return \Illuminate\Http\Response
      */
     public function edit(Consent $consent)
@@ -70,7 +76,7 @@ class ConsentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \TMI.academy\Consent  $consent
+     * @param  \App\Consent  $consent
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Consent $consent)
@@ -81,7 +87,7 @@ class ConsentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \TMI.academy\Consent  $consent
+     * @param  \App\Consent  $consent
      * @return \Illuminate\Http\Response
      */
     public function destroy(Consent $consent)
