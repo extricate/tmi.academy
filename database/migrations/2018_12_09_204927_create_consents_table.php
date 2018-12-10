@@ -15,8 +15,6 @@ class CreateConsentsTable extends Migration
     {
         Schema::create('consents', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('status')->default(1);
-            $table->boolean('given')->default(false);
 
             $table->integer('student_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('students');

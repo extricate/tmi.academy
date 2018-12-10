@@ -6,11 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Consent extends Model
 {
-    protected $fillable = [
-        'status',
-        'given',
-        'student_id',
-    ];
+    // disable mass assignment protection
+    protected $guarded = [];
 
     public function owner()
     {

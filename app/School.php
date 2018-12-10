@@ -34,11 +34,7 @@ class School extends Model
         return '/schools/' . $this->slug;
     }
 
-    public function classes() {
-        return $this->hasMany(Schoolclass::class);
-    }
-
     public function students() {
-        return $this->hasManyThrough(Student::class, Schoolclass::class);
+        return $this->hasMany(Student::class);
     }
 }

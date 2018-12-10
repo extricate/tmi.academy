@@ -27,8 +27,8 @@ class AddSchoolIdFieldToStudents extends Migration
     public function down()
     {
         Schema::table('students', function (Blueprint $table) {
-            $table->dropForeign('school_id')->references('id')->on('schools');
-            $table->dropColumn('school_id')->unsigned();
+            $table->dropForeign('students_school_id_foreign');
+            $table->dropColumn('school_id');
         });
     }
 }

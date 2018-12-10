@@ -1,8 +1,20 @@
-{{ $school->name }}
-{{ $school->id }}
-@foreach($school->classes as $class)
-    {{ $class->id }}
-    {{ $class->students->count() }}
-@endforeach
+@extends('layouts.app')
 
-<a href="/klassen/nieuw" class="btn btn-primary">Nieuwe klas</a>
+@section('content')
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body">
+
+                    {{ $school->name }}
+                    {{ $school->id }}
+
+                    @foreach($school->students as $student)
+                        {{ $student->name }}
+                        {{ $student->getConsentStatus() }}
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Consent;
 use App\School;
+use App\Student;
 use Illuminate\Http\Request;
 
 class ConsentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'admin']);
+        $this->middleware(['auth', 'admin'])->except(['create', 'store']);
     }
 
     /**
@@ -43,7 +44,50 @@ class ConsentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'school_id' => 'required|exists:schools,id|integer|max:255',
+            'consenter_name' => 'required|string|min:4|max:255',
+            'student_name' => 'required|string|min:4|max:255',
+            'evaluation' => 'boolean|nullable',
+            'class' => 'boolean|nullable',
+            'school' => 'boolean|nullable',
+            'other_schools' => 'boolean|nullable',
+            'illustrations' => 'boolean|nullable',
+            'website' => 'boolean|nullable',
+            'ministry_evaluation' => 'boolean|nullable',
+            'ministry_illustration' => 'boolean|nullable',
+            'ministry_website' => 'boolean|nullable',
+            'of_age' => 'required|boolean',
+            'legal_representative' => 'required|boolean',
+            'truth' => 'required|boolean',
+        ]);
+
+        // first we create a student based on this
+        $student = Student::create([
+            'name' => $request->student_name,
+            'school_id' => $request->school_id,
+        ]);
+
+        // create consent
+        Consent::create([
+            'consenter_name' => $request->consenter_name,
+            'student_id' => $student->id,
+            'evaluation' => $request->evaluation,
+            'class' => $request->class,
+            'school' => $request->school,
+            'other_schools' => $request->other_schools,
+            'illustrations' => $request->illustrations,
+            'website' => $request->website,
+            'ministry_evaluation' => $request->ministry_evaluation,
+            'ministry_illustration' => $request->ministry_illustration,
+            'ministry_website' => $request->ministry_website,
+            'of_age' => $request->of_age,
+            'legal_representative' => $request->legal_representative,
+            'truth' => $request->truth,
+            'ip_address' => $request->ip(),
+        ]);
+
+        return redirect()->back();
     }
 
     /**

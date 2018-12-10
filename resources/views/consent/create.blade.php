@@ -18,10 +18,20 @@
                     <p>
                         Indien u daartegen geen bezwaar heeft, wilt u dan het onderstaande formulier invullen?
                     </p>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <h2>Informatie geportretteerde</h2>
                     <div class="form-group">
-                        {!! Form::label('school', 'De geporteretteerde persoon (deelnemer workshop) zit op:') !!}
-                        {!! Form::select('school', $schools, null, ['class' => 'form-control', 'placeholder' => 'Kies hier een school', 'required' => 'required']) !!}
+                        {!! Form::label('school', 'De geporteretteerde persoon (deelnemer workshop, in veel gevallen uw kind) zit op:') !!}
+                        {!! Form::select('school_id', $schools, null, ['class' => 'form-control', 'placeholder' => 'Kies hier een school', 'required' => 'required']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('student_name', 'Ik geef toestemming namens') !!}
@@ -37,46 +47,46 @@
                         communicatievormen die ik hieronder heb aangekruist:
         ') !!}
                         <div class="form-check">
-                            {!! Form::checkbox('consent', 'evaluation', false, array(
+                            {!! Form::checkbox('evaluation', true, false, array(
                             'class' => 'form-check-input',
                             'id' => 'consent-evaluation',
                             )) !!}
                             {!! Form::label('consent-evaluation', 'Voor evaluatie doeleinden zodat we de workshops beter kunnen maken', ['class' => 'form-check-label']) !!}
                         </div>
                         <div class="form-check">
-                            {!! Form::checkbox('consent', 'class', false, array(
+                            {!! Form::checkbox('class', true, false, array(
                             'class' => 'form-check-input',
                             'id' => 'consent-class',
                             )) !!}
                             {!! Form::label('consent-class', 'Voor de workshops van deze klas', ['class' => 'form-check-label']) !!}
                         </div>
                         <div class="form-check">
-                            {!! Form::checkbox('consent', 'school', false, array(
+                            {!! Form::checkbox('school', true, false, array(
                             'class' => 'form-check-input',
                             'id' => 'consent-school',
                             )) !!}
                             {!! Form::label('consent-school', 'Voor de workshops van TMI.academy van deze school', ['class' => 'form-check-label']) !!}
                         </div>
                         <div class="form-check">
-                            {!! Form::checkbox('consent', 'other-schools', false, array(
+                            {!! Form::checkbox('other_schools', true, false, array(
                             'class' => 'form-check-input',
                             'id' => 'consent-other-schools',
                             )) !!}
                             {!! Form::label('consent-other-schools', 'Voor de workshops van TMI.academy, ook bij andere scholen en jongerenorganisaties', ['class' => 'form-check-label']) !!}
                         </div>
                         <div class="form-check">
-                            {!! Form::checkbox('consent', 'illustrations', false, array(
+                            {!! Form::checkbox('illustrations', true, false, array(
                             'class' => 'form-check-input',
-                            'id' => 'consent-illustrations',
+                            'id' => 'consent_illustrations',
                             )) !!}
-                            {!! Form::label('consent-illustrations', 'Ter illustratie van het werk van TMI.academy op besloten gelegenheden. Bijvoorbeeld bij presentaties over ons werk of bij gesprekken met andere scholen of instellingen.', ['class' => 'form-check-label']) !!}
+                            {!! Form::label('consent_illustrations', 'Ter illustratie van het werk van TMI.academy op besloten gelegenheden. Bijvoorbeeld bij presentaties over ons werk of bij gesprekken met andere scholen of instellingen.', ['class' => 'form-check-label']) !!}
                         </div>
                         <div class="form-check">
-                            {!! Form::checkbox('consent', 'website', false, array(
+                            {!! Form::checkbox('website', true, false, array(
                             'class' => 'form-check-input',
-                            'id' => 'consent-website',
+                            'id' => 'consent_website',
                             )) !!}
-                            {!! Form::label('consent-website', 'Op de website en social media van TMI.academy, bijvoorbeeld in een compilatie van video\'s', ['class' => 'form-check-label']) !!}
+                            {!! Form::label('consent_website', 'Op de website en social media van TMI.academy, bijvoorbeeld in een compilatie van video\'s', ['class' => 'form-check-label']) !!}
                         </div>
                     </div>
 
@@ -85,25 +95,25 @@
                         {!! Form::label('consent-ministry', 'Het Ministerie van Justitie en Veiligheid, die dit project heeft gesubsidieerd, mag deze foto’s en video’s die gemaakt zijn bij deze lessen gebruiken in de communicatievormen die ik hieronder heb aangekruist:
                 ') !!}
                         <div class="form-check">
-                            {!! Form::checkbox('consent-ministry', 'ministry-evaluation', false, array(
+                            {!! Form::checkbox('ministry_evaluation', true, false, array(
                             'class' => 'form-check-input',
-                            'id' => 'ministry-evaluation',
+                            'id' => 'ministry_evaluation',
                             )) !!}
-                            {!! Form::label('ministry-evaluation', 'Voor evaluatie doeleinden zodat de workshops kunnen worden verbeterd.', ['class' => 'form-check-label']) !!}
+                            {!! Form::label('ministry_evaluation', 'Voor evaluatie doeleinden zodat de workshops kunnen worden verbeterd.', ['class' => 'form-check-label']) !!}
                         </div>
                         <div class="form-check">
-                            {!! Form::checkbox('consent-ministry', 'ministry-illustration', false, array(
+                            {!! Form::checkbox('ministry_illustration', true, false, array(
                             'class' => 'form-check-input',
-                            'id' => 'ministry-illustration',
+                            'id' => 'ministry_illustration',
                             )) !!}
-                            {!! Form::label('ministry-illustration', 'Ter illustratie van de betrokkenheid van het Ministerie van Justitie en veiligheid op besloten gelegenheden. Bijvoorbeeld bij presentaties over deze workshops.', ['class' => 'form-check-label']) !!}
+                            {!! Form::label('ministry_illustration', 'Ter illustratie van de betrokkenheid van het Ministerie van Justitie en veiligheid op besloten gelegenheden. Bijvoorbeeld bij presentaties over deze workshops.', ['class' => 'form-check-label']) !!}
                         </div>
                         <div class="form-check">
-                            {!! Form::checkbox('consent-ministry', 'ministry-website', false, array(
+                            {!! Form::checkbox('ministry_website', true, false, array(
                             'class' => 'form-check-input',
-                            'id' => 'ministry-website',
+                            'id' => 'ministry_website',
                             )) !!}
-                            {!! Form::label('ministry-website', 'Op de website en social media van het Ministerie van Justitie, bijvoorbeeld in een compilatie van video\'s.', ['class' => 'form-check-label']) !!}
+                            {!! Form::label('ministry_website', 'Op de website en social media van het Ministerie van Justitie, bijvoorbeeld in een compilatie van video\'s.', ['class' => 'form-check-label']) !!}
                         </div>
                     </div>
 
@@ -111,20 +121,20 @@
                     <div class="form-group">
                         {!! Form::label('verification', 'Aankruisen wat van toepassing is:') !!}
                         <div class="form-check">
-                            {!! Form::checkbox('verification', 'of-age', false, array(
+                            {!! Form::checkbox('of_age', true, false, array(
                             'class' => 'form-check-input',
-                            'id' => 'of-age',
+                            'id' => 'of_age',
                             'required' => 'required',
                             )) !!}
-                            {!! Form::label('of-age', 'Ik ben meerderjarig', ['class' => 'form-check-label']) !!}
+                            {!! Form::label('of_age', 'Ik ben meerderjarig', ['class' => 'form-check-label']) !!}
                         </div>
                         <div class="form-check">
-                            {!! Form::checkbox('verification', 'legal-representative', false, array(
+                            {!! Form::checkbox('legal_representative', true, false, array(
                             'class' => 'form-check-input',
-                            'id' => 'legal-representative',
+                            'id' => 'legal_representative',
                             'required' => 'required',
                             )) !!}
-                            {!! Form::label('legal-representative', 'De "geportretteerde persoon" (de deelnemer aan de workshop) is minderjarig. Ik ben de wettelijke vertegenwoordiger en zal deze verklaring (mede) ondertekenen', ['class' => 'form-check-label']) !!}
+                            {!! Form::label('legal_representative', 'De "geportretteerde persoon" (de deelnemer aan de workshop) is minderjarig. Ik ben de wettelijke vertegenwoordiger en zal deze verklaring (mede) ondertekenen', ['class' => 'form-check-label']) !!}
                         </div>
                     </div>
 
@@ -147,8 +157,10 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::checkbox('truth', 'true', ['class' => 'form-check-input', 'required' => 'required']); !!}
-                        {!! Form::label('truth', 'Ik verklaar bovenstaande naar waarheid te hebben ingevuld', ['class' => 'form-check-label']) !!}
+                        <div class="form-check">
+                            {!! Form::checkbox('truth', true, false, ['class' => 'form-check-input', 'required' => 'required', 'id' => 'truth',]) !!}
+                            {!! Form::label('truth', 'Ik verklaar bovenstaande naar waarheid te hebben ingevuld', ['class' => 'form-check-label']) !!}
+                        </div>
                     </div>
 
                     <div class="form-group">
