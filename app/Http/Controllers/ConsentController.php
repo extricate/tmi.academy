@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Consent;
+use App\Mail\ConsentOverviewForParents;
 use App\School;
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ConsentController extends Controller
 {
@@ -87,7 +89,7 @@ class ConsentController extends Controller
             'ip_address' => $request->ip(),
         ]);
 
-        return redirect()->back();
+        return redirect(route('consent.thanks', $student));
     }
 
     /**
@@ -133,5 +135,30 @@ class ConsentController extends Controller
     public function destroy(Consent $consent)
     {
         //
+    }
+
+    /**
+     * Show thank you message after completing a submission
+     */
+    public function thanks($student)
+    {
+        $student = Student::findOrFail($student);
+        return view('consent.thanks', compact('student'));
+    }
+
+    /**
+     * Send email message if consent giver wants to receive it
+     */
+    public function email(Request $request, $id)
+    {
+        $request->validate([
+            'email' => 'email|string|required'
+        ]);
+
+        $student = Student::findOrFail($id);
+
+        Mail::to($request->email)->send(new ConsentOverviewForParents($student));
+
+        return redirect()->back();
     }
 }

@@ -19,6 +19,6 @@
     Bekijk de volledige offerteaanvraag
 @endcomponent
 
-Thanks,<br>
+Bedankt,<br>
 {{ config('app.name') }}
 @endcomponent

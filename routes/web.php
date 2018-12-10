@@ -21,9 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/offerte', 'QuoteController');
 
-Route::get('/privacy/toestemming', 'ConsentController@create');
+Route::get('/privacy/toestemming', 'ConsentController@create')->name('consent.create');
 Route::post('/privacy/toestemming', 'ConsentController@store');
 
+Route::get('/toestemming/{student}/bedankt', 'ConsentController@thanks')->name('consent.thanks');
+Route::post('/toestemming/{student}/bedankt/email', 'ConsentController@email')->name('consent.email');
 Route::resource('/toestemming', 'ConsentController');
 
 Route::get('/school', 'SchoolController@index');
@@ -34,6 +36,8 @@ Route::resource('/schools', 'SchoolController');
 
 Route::get('/klassen/nieuw', 'SchoolclassController@create');
 Route::post('/klassen/nieuw', 'SchoolclassController@store');
+
+Route::resource('/student', 'StudentController');
 
 Route::get('/mails', function () {
     $quote = \App\Quote::first();

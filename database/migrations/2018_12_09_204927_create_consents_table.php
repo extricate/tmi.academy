@@ -17,7 +17,7 @@ class CreateConsentsTable extends Migration
             $table->increments('id');
 
             $table->integer('student_id')->unsigned();
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
 
             $table->timestamps();
         });

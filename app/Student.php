@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -11,6 +12,8 @@ class Student extends Model
         'school_id',
     ];
 
+    use Searchable;
+
     public function school() {
         return $this->belongsTo(School::class);
     }
@@ -19,13 +22,27 @@ class Student extends Model
         return $this->hasOne(Consent::class);
     }
 
-    public function getConsentStatus() {
+    public function fullConsentGiven() {
         $consent = $this->consent;
-        dd($consent);
-        if ($consent->in_array(false || null)) {
-            return 'partial consent given';
+
+        $consent = $consent->only(
+            'evaluation',
+            'class',
+            'school',
+            'other_schools',
+            'illustrations',
+            'website',
+            'ministry_evaluation',
+            'ministry_illustration',
+            'ministry_website'
+        );
+
+        foreach ($consent as $element) {
+            if ($element != true) {
+                return false;
+            }
         }
 
-        return 'full consent given';
+        return true;
     }
 }
