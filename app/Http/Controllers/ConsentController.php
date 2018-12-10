@@ -10,7 +10,7 @@ class ConsentController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware(['auth', 'admin']);
+        $this->middleware(['auth', 'admin']);
     }
 
     /**
@@ -31,11 +31,7 @@ class ConsentController extends Controller
      */
     public function create()
     {
-        // 1. We create a school and the corresponding classes with all students that are going to participate
-        // 2. We prepare a consent batch for every student that will participate
-        // 3. We create the ondertekenen.nl batches and await consent
-
-        $schools = School::all();
+        $schools = School::pluck('name', 'id');
         return view('consent.create', compact('schools'));
     }
 

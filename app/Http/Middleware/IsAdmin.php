@@ -17,6 +17,6 @@ class IsAdmin
         if (Auth::user() &&  Auth::user()->admin == true) {
             return $next($request);
         }
-        return redirect(route('home'))->with(['message' => 'You do not have sufficient permissions to do that.', 'alert_type' => 'danger']);
+        return abort(401, 'Unauthorized');
     }
 }

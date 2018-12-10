@@ -4,3 +4,5 @@
     {{ $class->id }}
     {{ $class->students->count() }}
 @endforeach
+
+<a href="/klassen/nieuw" class="btn btn-primary">Nieuwe klas</a>

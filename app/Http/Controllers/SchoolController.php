@@ -11,8 +11,10 @@ class SchoolController extends Controller
     public $schools;
 
     public function __construct() {
+        $this->middleware(['auth', 'admin'] );
         $this->schools = School::paginate(25);
     }
+
     public function index()
     {
         $schools = $this->schools;
@@ -33,26 +35,32 @@ class SchoolController extends Controller
 
         School::create($request->all());
 
-        return view('schools.index');
+        return redirect(route('schools.index'));
     }
 
-    public function show(School $school, $slug)
+    public function show($slug)
     {
-        $result = School::where('slug', $slug)->first();
-
-        if ($result == null) {
-            $result = School::findOrFail($school->id);
-        }
+        $result = School::where('slug', $slug)->firstOrFail();
 
         $school = $result;
 
         return view('schools.show', compact('school'));
     }
 
-    public function edit(School $school)
+    public function edit($slug)
     {
-        $school = School::findOrFail($school->id);
+        $school = School::where('slug', $slug)->firstOrFail();
 
         return view('schools.edit', compact('school'));
+    }
+
+    public function update(Request $request, School $school)
+    {
+        //
+    }
+
+    public function destroy(School $school)
+    {
+        //
     }
 }

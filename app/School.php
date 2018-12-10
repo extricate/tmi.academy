@@ -10,6 +10,7 @@ class School extends Model
 {
     protected $fillable = [
         'name',
+        'slug',
     ];
 
     use HasSlug;
@@ -22,6 +23,15 @@ class School extends Model
         return SlugOptions::create()
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function url() {
+        return '/schools/' . $this->slug;
     }
 
     public function classes() {

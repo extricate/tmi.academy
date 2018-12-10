@@ -1,5 +1,5 @@
 @foreach($schools as $school)
-    {{ $school->name }} | Leerlingen: {{ $school->students->count() }}
+    <a href="{{ $school->url() }}">{{ $school->name }}</a> | Leerlingen: {{ $school->students->count() }}
 @endforeach
 
 {{ $schools->links() }}

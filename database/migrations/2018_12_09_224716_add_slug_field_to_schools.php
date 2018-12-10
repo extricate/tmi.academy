@@ -14,7 +14,7 @@ class AddSlugFieldToSchools extends Migration
     public function up()
     {
         Schema::table('schools', function (Blueprint $table) {
-            $table->string('slug');
+            $table->string('slug')->unique();
         });
     }
 
