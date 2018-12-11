@@ -14,7 +14,7 @@
                             Uw kind gaat deelnemen aan workshops over mediawijsheid. Deze lessen worden gegeven door
                             TMI.academy, vanwege onze kennis op het gebied van media en om onze 'jonge' manier van
                             overbrengen. TMI.academy voert deze workshops uit in samenwerking met het Ministerie van
-                            Justitie en Veiligheid. De lessen vinden plaats op het Globe College en wordt gegeven
+                            Justitie en Veiligheid. De lessen vinden plaats op verschillende scholen en worden gegeven
                             tijdens de lesuren. Om die lessen over media extra kracht bij te zetten,
                             willen we tijdens die lessen ook video's en foto's maken.
                         </p>
@@ -41,6 +41,20 @@
                             {!! Form::text('student_name', null, ['class' => 'form-control', 'placeholder' => 'Typ hier de naam van het de geportretteerde persoon waar u toestemming voor wil registreren', 'required' => 'required']) !!}
                         </div>
                         <hr>
+                        <div class="mdc-checkbox">
+                            <input type="checkbox"
+                                   class="mdc-checkbox__native-control"
+                                   id="checkbox-1"/>
+                            <div class="mdc-checkbox__background">
+                                <svg class="mdc-checkbox__checkmark"
+                                     viewBox="0 0 24 24">
+                                    <path class="mdc-checkbox__checkmark-path"
+                                          fill="none"
+                                          d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                </svg>
+                                <div class="mdc-checkbox__mixedmark"></div>
+                            </div>
+                        </div>
 
                         <h2>Toestemming</h2>
                         <div class="form-group">

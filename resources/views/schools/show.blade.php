@@ -10,6 +10,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h1>{{ $school->name }}</h1>
+                        <SearchComponent></SearchComponent>
                         @forelse($school->students as $student)
                             <div class="card m-2">
                                 <div class="card-body">
