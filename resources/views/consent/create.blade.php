@@ -6,7 +6,7 @@
     <div class="container float-header">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-body">
                         <h1>Toestemmingsformulier</h1>
                         {!! Form::model(['route' => ['toestemming.create']]) !!}
@@ -40,97 +40,183 @@
                             {!! Form::label('student_name', 'Ik geef toestemming namens') !!}
                             {!! Form::text('student_name', null, ['class' => 'form-control', 'placeholder' => 'Typ hier de naam van het de geportretteerde persoon waar u toestemming voor wil registreren', 'required' => 'required']) !!}
                         </div>
-                        <hr>
-                        <div class="mdc-checkbox">
-                            <input type="checkbox"
-                                   class="mdc-checkbox__native-control"
-                                   id="checkbox-1"/>
-                            <div class="mdc-checkbox__background">
-                                <svg class="mdc-checkbox__checkmark"
-                                     viewBox="0 0 24 24">
-                                    <path class="mdc-checkbox__checkmark-path"
-                                          fill="none"
-                                          d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                                </svg>
-                                <div class="mdc-checkbox__mixedmark"></div>
-                            </div>
-                        </div>
-
                         <h2>Toestemming</h2>
                         <div class="form-group">
-                            {!! Form::label('consent',
-                            'Tijdens de lessen Mediawijsheid worden video\'s en foto\'s gemaakt, waarbij mijn kind
-                            herkenbaar in beeld wordt gebracht. Ik geef TMI.academy daarvoor toestemming.
-                            De foto\'s en video\'s die gemaakt zijn bij deze lessen mogen door TMI.academy gebruikt worden in de
-                            communicatievormen die ik hieronder heb aangekruist:
-            ') !!}
-                            <div class="form-check">
-                                {!! Form::checkbox('evaluation', true, false, array(
-                                'class' => 'form-check-input',
-                                'id' => 'consent-evaluation',
-                                )) !!}
+                            <p>
+                                Tijdens de lessen Mediawijsheid worden video's en foto's gemaakt, waarbij mijn kind
+                                herkenbaar in beeld wordt gebracht. Ik geef TMI.academy daarvoor toestemming.
+                                De foto's en video's die gemaakt zijn bij deze lessen mogen door TMI.academy gebruikt
+                                worden in de communicatievormen die ik hieronder heb aangekruist:
+                            </p>
+                            <div class="mdc-form-field">
+                                <div class="mdc-checkbox">
+                                    {!! Form::checkbox('evaluation', true, false, array(
+                                    'class' => 'mdc-checkbox__native-control',
+                                    'id' => 'consent-evaluation',
+                                    )) !!}
+                                    <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark"
+                                             viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path"
+                                                  fill="none"
+                                                  d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                    </div>
+                                </div>
                                 {!! Form::label('consent-evaluation', 'Voor evaluatie doeleinden zodat we de workshops beter kunnen maken', ['class' => 'form-check-label']) !!}
                             </div>
-                            <div class="form-check">
-                                {!! Form::checkbox('class', true, false, array(
-                                'class' => 'form-check-input',
-                                'id' => 'consent-class',
-                                )) !!}
+                            <div class="mdc-form-field">
+                                <div class="mdc-checkbox">
+                                    {!! Form::checkbox('class', true, false, array(
+                                    'class' => 'mdc-checkbox__native-control',
+                                    'id' => 'consent-class',
+                                    )) !!}
+                                    <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark"
+                                             viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path"
+                                                  fill="none"
+                                                  d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                    </div>
+                                </div>
                                 {!! Form::label('consent-class', 'Voor de workshops van deze klas', ['class' => 'form-check-label']) !!}
                             </div>
-                            <div class="form-check">
-                                {!! Form::checkbox('school', true, false, array(
-                                'class' => 'form-check-input',
-                                'id' => 'consent-school',
-                                )) !!}
+                            <div class="mdc-form-field">
+                                <div class="mdc-checkbox">
+                                    {!! Form::checkbox('school', true, false, array(
+                                    'class' => 'mdc-checkbox__native-control',
+                                    'id' => 'consent-school',
+                                    )) !!}
+                                    <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark"
+                                             viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path"
+                                                  fill="none"
+                                                  d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                    </div>
+                                </div>
                                 {!! Form::label('consent-school', 'Voor de workshops van TMI.academy van deze school', ['class' => 'form-check-label']) !!}
                             </div>
-                            <div class="form-check">
-                                {!! Form::checkbox('other_schools', true, false, array(
-                                'class' => 'form-check-input',
-                                'id' => 'consent-other-schools',
-                                )) !!}
+                            <div class="mdc-form-field">
+                                <div class="mdc-checkbox">
+                                    {!! Form::checkbox('other_schools', true, false, array(
+                                    'class' => 'mdc-checkbox__native-control',
+                                    'id' => 'consent-other-schools',
+                                    )) !!}
+                                    <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark"
+                                             viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path"
+                                                  fill="none"
+                                                  d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                    </div>
+                                </div>
                                 {!! Form::label('consent-other-schools', 'Voor de workshops van TMI.academy, ook bij andere scholen en jongerenorganisaties', ['class' => 'form-check-label']) !!}
                             </div>
-                            <div class="form-check">
-                                {!! Form::checkbox('illustrations', true, false, array(
-                                'class' => 'form-check-input',
-                                'id' => 'consent_illustrations',
-                                )) !!}
+                            <div class="mdc-form-field">
+                                <div class="mdc-checkbox">
+                                    {!! Form::checkbox('illustrations', true, false, array(
+                                    'class' => 'mdc-checkbox__native-control',
+                                    'id' => 'consent_illustrations',
+                                    )) !!}
+                                    <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark"
+                                             viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path"
+                                                  fill="none"
+                                                  d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                    </div>
+                                </div>
                                 {!! Form::label('consent_illustrations', 'Ter illustratie van het werk van TMI.academy op besloten gelegenheden. Bijvoorbeeld bij presentaties over ons werk of bij gesprekken met andere scholen of instellingen.', ['class' => 'form-check-label']) !!}
                             </div>
-                            <div class="form-check">
-                                {!! Form::checkbox('website', true, false, array(
-                                'class' => 'form-check-input',
-                                'id' => 'consent_website',
-                                )) !!}
+                            <div class="mdc-form-field">
+                                <div class="mdc-checkbox">
+                                    {!! Form::checkbox('website', true, false, array(
+                                    'class' => 'mdc-checkbox__native-control',
+                                    'id' => 'consent_website',
+                                    )) !!}
+                                    <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark"
+                                             viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path"
+                                                  fill="none"
+                                                  d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                    </div>
+                                </div>
                                 {!! Form::label('consent_website', 'Op de website en social media van TMI.academy, bijvoorbeeld in een compilatie van video\'s', ['class' => 'form-check-label']) !!}
                             </div>
                         </div>
 
                         <h3>Aanvullende toestemming</h3>
                         <div class="form-group">
-                            {!! Form::label('consent-ministry', 'Het Ministerie van Justitie en Veiligheid, die dit project heeft gesubsidieerd, mag deze foto’s en video’s die gemaakt zijn bij deze lessen gebruiken in de communicatievormen die ik hieronder heb aangekruist:
-                    ') !!}
-                            <div class="form-check">
-                                {!! Form::checkbox('ministry_evaluation', true, false, array(
-                                'class' => 'form-check-input',
-                                'id' => 'ministry_evaluation',
-                                )) !!}
+                            <p>
+                                Het Ministerie van Justitie en Veiligheid, die dit project heeft gesubsidieerd, mag deze
+                                foto’s en video’s die gemaakt zijn bij deze lessen gebruiken in de communicatievormen
+                                die ik hieronder heb aangekruist:
+                            </p>
+                            <div class="mdc-form-field">
+                                <div class="mdc-checkbox">
+                                    {!! Form::checkbox('ministry_evaluation', true, false, array(
+                                    'class' => 'mdc-checkbox__native-control',
+                                    'id' => 'ministry_evaluation',
+                                    )) !!}
+                                    <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark"
+                                             viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path"
+                                                  fill="none"
+                                                  d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                    </div>
+                                </div>
                                 {!! Form::label('ministry_evaluation', 'Voor evaluatie doeleinden zodat de workshops kunnen worden verbeterd.', ['class' => 'form-check-label']) !!}
                             </div>
-                            <div class="form-check">
-                                {!! Form::checkbox('ministry_illustration', true, false, array(
-                                'class' => 'form-check-input',
-                                'id' => 'ministry_illustration',
-                                )) !!}
+                            <div class="mdc-form-field">
+                                <div class="mdc-checkbox">
+                                    {!! Form::checkbox('ministry_illustration', true, false, array(
+                                    'class' => 'mdc-checkbox__native-control',
+                                    'id' => 'ministry_illustration',
+                                    )) !!}
+                                    <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark"
+                                             viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path"
+                                                  fill="none"
+                                                  d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                    </div>
+                                </div>
                                 {!! Form::label('ministry_illustration', 'Ter illustratie van de betrokkenheid van het Ministerie van Justitie en veiligheid op besloten gelegenheden. Bijvoorbeeld bij presentaties over deze workshops.', ['class' => 'form-check-label']) !!}
                             </div>
-                            <div class="form-check">
-                                {!! Form::checkbox('ministry_website', true, false, array(
-                                'class' => 'form-check-input',
-                                'id' => 'ministry_website',
-                                )) !!}
+                            <div class="mdc-form-field">
+                                <div class="mdc-checkbox">
+                                    {!! Form::checkbox('ministry_website', true, false, array(
+                                    'class' => 'mdc-checkbox__native-control',
+                                    'id' => 'ministry_website',
+                                    )) !!}
+                                    <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark"
+                                             viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path"
+                                                  fill="none"
+                                                  d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                    </div>
+                                </div>
                                 {!! Form::label('ministry_website', 'Op de website en social media van het Ministerie van Justitie, bijvoorbeeld in een compilatie van video\'s.', ['class' => 'form-check-label']) !!}
                             </div>
                         </div>
@@ -138,20 +224,42 @@
                         <h2>Verificatie</h2>
                         <div class="form-group">
                             {!! Form::label('verification', 'Aankruisen wat van toepassing is:') !!}
-                            <div class="form-check">
-                                {!! Form::checkbox('of_age', true, false, array(
-                                'class' => 'form-check-input',
-                                'id' => 'of_age',
-                                'required' => 'required',
-                                )) !!}
+                            <div class="mdc-form-field">
+                                <div class="mdc-checkbox">
+                                    {!! Form::checkbox('of_age', true, false, array(
+                                    'class' => 'mdc-checkbox__native-control',
+                                    'id' => 'of_age',
+                                    'required' => 'required',
+                                    )) !!}
+                                    <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark"
+                                             viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path"
+                                                  fill="none"
+                                                  d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                    </div>
+                                </div>
                                 {!! Form::label('of_age', 'Ik ben meerderjarig', ['class' => 'form-check-label']) !!}
                             </div>
-                            <div class="form-check">
-                                {!! Form::checkbox('legal_representative', true, false, array(
-                                'class' => 'form-check-input',
-                                'id' => 'legal_representative',
-                                'required' => 'required',
-                                )) !!}
+                            <div class="mdc-form-field">
+                                <div class="mdc-checkbox">
+                                    {!! Form::checkbox('legal_representative', true, false, array(
+                                    'class' => 'mdc-checkbox__native-control',
+                                    'id' => 'legal_representative',
+                                    'required' => 'required',
+                                    )) !!}
+                                    <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark"
+                                             viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path"
+                                                  fill="none"
+                                                  d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                    </div>
+                                </div>
                                 {!! Form::label('legal_representative', 'De "geportretteerde persoon" (de deelnemer aan de workshop) is minderjarig. Ik ben de wettelijke vertegenwoordiger en zal deze verklaring (mede) ondertekenen', ['class' => 'form-check-label']) !!}
                             </div>
                         </div>
@@ -175,8 +283,19 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="form-check">
-                                {!! Form::checkbox('truth', true, false, ['class' => 'form-check-input', 'required' => 'required', 'id' => 'truth',]) !!}
+                            <div class="mdc-form-field">
+                                <div class="mdc-checkbox">
+                                    {!! Form::checkbox('truth', true, false, ['class' => 'mdc-checkbox__native-control', 'required' => 'required', 'id' => 'truth',]) !!}
+                                    <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark"
+                                             viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path"
+                                                  fill="none"
+                                                  d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                    </div>
+                                </div>
                                 {!! Form::label('truth', 'Ik verklaar bovenstaande naar waarheid te hebben ingevuld', ['class' => 'form-check-label']) !!}
                             </div>
                         </div>

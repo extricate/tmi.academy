@@ -9,6 +9,7 @@
 @import '~@fortawesome/fontawesome-pro/css/all.css';
 
 // Google Material components
+@import "~@material/form-field/mdc-form-field";
 @import "~@material/checkbox/mdc-checkbox";
 
 .navbar-laravel {
@@ -43,4 +44,9 @@ footer {
   height: 120px;
   background-color: $black;
   color: $white;
+}
+
+.mdc-form-field {
+  width: 100%;
+  margin: 8px 0;
 }
