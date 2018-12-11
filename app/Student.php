@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Emadadly\LaravelUuid\Uuids;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +14,10 @@ class Student extends Model
     ];
 
     use Searchable;
+    use Uuids;
+
+    // Using UUIDs thus we set incrementing to false
+    public $incrementing = false;
 
     public function school() {
         return $this->belongsTo(School::class);

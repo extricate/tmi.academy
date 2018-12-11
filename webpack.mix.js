@@ -18,3 +18,4 @@ mix.js('resources/js/app.js', 'public/js')
 
 
 mix.copy('resources/assets/svg', 'public/assets', false);
+mix.copy('resources/assets/images', 'public/assets', false);

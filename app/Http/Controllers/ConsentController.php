@@ -13,7 +13,7 @@ class ConsentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'admin'])->except(['create', 'store']);
+        $this->middleware(['auth', 'admin'])->except(['create', 'store', 'thanks', 'email']);
     }
 
     /**
@@ -159,6 +159,6 @@ class ConsentController extends Controller
 
         Mail::to($request->email)->send(new ConsentOverviewForParents($student));
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Het overzicht is verzonden!');
     }
 }

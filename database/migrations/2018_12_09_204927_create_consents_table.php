@@ -16,7 +16,7 @@ class CreateConsentsTable extends Migration
         Schema::create('consents', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('student_id')->unsigned();
+            $table->uuid('student_id');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
 
             $table->timestamps();

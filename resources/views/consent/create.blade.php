@@ -8,8 +8,8 @@
             <div class="col-lg-8 offset-lg-2">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h1>Toestemmingsformulier</h1>
                         {!! Form::model(['route' => ['toestemming.create']]) !!}
+                        <h1>Toestemmingsformulier</h1>
                         <p>
                             Uw kind gaat deelnemen aan workshops over mediawijsheid. Deze lessen worden gegeven door
                             TMI.academy, vanwege onze kennis op het gebied van media en om onze 'jonge' manier van
@@ -21,7 +21,6 @@
                         <p>
                             Indien u daartegen geen bezwaar heeft, wilt u dan het onderstaande formulier invullen?
                         </p>
-
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul class="list-unstyled">
@@ -31,7 +30,9 @@
                                 </ul>
                             </div>
                         @endif
-                        <h2>Informatie geportretteerde</h2>
+                        <h2>
+                            Informatie geportretteerde
+                        </h2>
                         <div class="form-group">
                             {!! Form::label('school', 'De geporteretteerde persoon (deelnemer workshop, in veel gevallen uw kind) zit op:') !!}
                             {!! Form::select('school_id', $schools, null, ['class' => 'form-control', 'placeholder' => 'Kies hier een school', 'required' => 'required']) !!}
@@ -40,7 +41,7 @@
                             {!! Form::label('student_name', 'Ik geef toestemming namens') !!}
                             {!! Form::text('student_name', null, ['class' => 'form-control', 'placeholder' => 'Typ hier de naam van het de geportretteerde persoon waar u toestemming voor wil registreren', 'required' => 'required']) !!}
                         </div>
-                        <h2>Toestemming</h2>
+                        <h2 class="mt-4">Toestemming</h2>
                         <div class="form-group">
                             <p>
                                 Tijdens de lessen Mediawijsheid worden video's en foto's gemaakt, waarbij mijn kind
@@ -157,8 +158,6 @@
                                 {!! Form::label('consent_website', 'Op de website en social media van TMI.academy, bijvoorbeeld in een compilatie van video\'s', ['class' => 'form-check-label']) !!}
                             </div>
                         </div>
-
-                        <h3>Aanvullende toestemming</h3>
                         <div class="form-group">
                             <p>
                                 Het Ministerie van Justitie en Veiligheid, die dit project heeft gesubsidieerd, mag deze

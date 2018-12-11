@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                             @empty
-                                Deze school heeft nog geen leerlingen waarvan de toestemmingsformulier ingediend zijn.
+                                Deze school heeft nog geen leerlingen waarvan de toestemmingsformulieren ingediend zijn.
                         @endforelse
                     </div>
                 </div>

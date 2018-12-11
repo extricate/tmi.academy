@@ -9,6 +9,7 @@
         "algolia/algoliasearch-client-php": "^1.27",
         "clarkeash/doorman": "^2.1",
         "davejamesmiller/laravel-breadcrumbs": "5.x",
+        "emadadly/laravel-uuid": "^1.2",
         "fideloper/proxy": "^4.0",
         "kris/laravel-form-builder": "^1.15",
         "laravel/framework": "5.7.*",
