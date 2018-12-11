@@ -15,24 +15,40 @@
                             <div class="card m-2">
                                 <div class="card-body">
                                     {{ $student->name }}
-                                    @if($student->fullConsentGiven())
-                                        <span class="badge badge-success">
-                                            Volledige toestemming
-                                        </span>
-                                    @else
-                                        <span class="badge badge-danger">
-                                            Onvolledige of geen toestemming
-                                        </span>
-                                    @endif
                                     <div class="float-right">
-                                        {!! Form::open(['route' => ['student.destroy', $student], 'method' => 'DELETE']) !!}
-                                        {!! Form::submit('x', ['class' => 'btn btn-primary btn-danger btn-sm']) !!}
+                                        @if($student->tmiConsentCheck())
+                                            <span class="badge badge-success badge-lg">
+                                            <i class="fal fa-check"></i> Toestemming TMI
+                                        </span>
+                                        @else
+                                            <span class="badge badge-danger badge-lg">
+                                            <i class="fal fa-times"></i> Toestemming TMI
+                                        </span>
+                                        @endif
+
+                                        @if($student->ministryConsentCheck())
+                                            <span class="badge badge-success badge-lg">
+                                            <i class="fal fa-check"></i> Toestemming Ministerie
+                                        </span>
+                                        @else
+                                            <span class="badge badge-danger badge-lg">
+                                            <i class="fal fa-times"></i> Toestemming Ministerie
+                                        </span>
+                                        @endif
+
+                                        {!! Form::open(['route' => ['student.destroy', $student], 'method' => 'DELETE', 'class' => 'display-inline']) !!}
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fal fa-trash"></i>
+                                        </button>
                                         {!! Form::close() !!}
+                                        <a href="/edit" class="btn btn-primary btn-sm">
+                                            <i class="fal fa-wrench"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                            @empty
-                                Deze school heeft nog geen leerlingen waarvan de toestemmingsformulieren ingediend zijn.
+                        @empty
+                            Deze school heeft nog geen leerlingen waarvan de toestemmingsformulieren ingediend zijn.
                         @endforelse
                     </div>
                 </div>

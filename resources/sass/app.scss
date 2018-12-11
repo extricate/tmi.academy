@@ -54,3 +54,24 @@ footer {
 .overlay-dark {
   background-color: rgba(0, 0, 0, 0.4);
 }
+
+.badge {
+  font-weight: normal;
+}
+
+.badge-lg {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: 0.2rem;
+}
+
+/* Display helpers */
+.display-inline {
+  display: inline;
+}

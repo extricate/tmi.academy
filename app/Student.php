@@ -27,20 +27,41 @@ class Student extends Model
         return $this->hasOne(Consent::class);
     }
 
-    public function fullConsentGiven() {
+    public function consentFields() {
         $consent = $this->consent;
 
-        $consent = $consent->only(
+        return $consent = $consent->only(
             'evaluation',
             'class',
             'school',
             'other_schools',
             'illustrations',
-            'website',
+            'website'
+        );
+    }
+
+    public function consentEmail() {
+
+    }
+
+    public function tmiConsentCheck() {
+        $consent = $this->consentFields();
+
+        foreach ($consent as $element) {
+            if ($element != true) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function ministryConsentCheck() {
+        $consent = $this->consent->only([
             'ministry_evaluation',
             'ministry_illustration',
             'ministry_website'
-        );
+        ]);
 
         foreach ($consent as $element) {
             if ($element != true) {

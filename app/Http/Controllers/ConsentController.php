@@ -159,6 +159,6 @@ class ConsentController extends Controller
 
         Mail::to($request->email)->send(new ConsentOverviewForParents($student));
 
-        return redirect()->back()->with('message', 'Het overzicht is verzonden!');
+        return redirect()->back()->with('message', 'Het overzicht is verzonden naar ' . $request->email .  '!');
     }
 }

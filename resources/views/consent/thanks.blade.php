@@ -28,6 +28,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        @if(Session::has('message'))
+                            <p class="mt-2 mb-2 alert alert-success">{{ Session::get('message') }}</p>
+                        @endif
                         {!! Form::close() !!}
                     </div>
                 </div>
