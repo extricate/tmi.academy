@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <h1>Scholen</h1>
                         @foreach($schools as $school)
-                            <div class="card m-3">
+                            <div class="card mt-3 mb-3">
                                 <div class="card-body">
                                     <a class="h2" href="{{ $school->url() }}">{{ $school->name }}</a>
                                     Leerlingen: {{ $school->students->count() }}

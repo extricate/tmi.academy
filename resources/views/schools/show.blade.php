@@ -12,38 +12,39 @@
                         <h1>{{ $school->name }}</h1>
                         <SearchComponent></SearchComponent>
                         @forelse($school->students as $student)
-                            <div class="card m-2">
+                            <div class="card mt-2 mb-2">
                                 <div class="card-body">
                                     {{ $student->name }}
                                     <div class="float-right">
                                         @if($student->tmiConsentCheck())
                                             <span class="badge badge-success badge-lg">
-                                            <i class="fal fa-check"></i> Toestemming TMI
+                                            <i class="fal fa-check-circle"></i> Toestemming TMI
                                         </span>
                                         @else
                                             <span class="badge badge-danger badge-lg">
-                                            <i class="fal fa-times"></i> Toestemming TMI
+                                            <i class="fal fa-times-circle"></i> Toestemming TMI
                                         </span>
                                         @endif
 
                                         @if($student->ministryConsentCheck())
                                             <span class="badge badge-success badge-lg">
-                                            <i class="fal fa-check"></i> Toestemming Ministerie
+                                            <i class="fal fa-check-circle"></i> Toestemming Ministerie
                                         </span>
                                         @else
                                             <span class="badge badge-danger badge-lg">
-                                            <i class="fal fa-times"></i> Toestemming Ministerie
+                                            <i class="fal fa-times-circle"></i> Toestemming Ministerie
                                         </span>
                                         @endif
 
+                                        <a href="/studenten/{{ $student->id }}/edit" class="btn btn-primary btn-sm">
+                                            <i class="fal fa-wrench"></i>
+                                        </a>
                                         {!! Form::open(['route' => ['student.destroy', $student], 'method' => 'DELETE', 'class' => 'display-inline']) !!}
                                         <button type="submit" class="btn btn-danger btn-sm">
                                             <i class="fal fa-trash"></i>
                                         </button>
                                         {!! Form::close() !!}
-                                        <a href="/edit" class="btn btn-primary btn-sm">
-                                            <i class="fal fa-wrench"></i>
-                                        </a>
+
                                     </div>
                                 </div>
                             </div>

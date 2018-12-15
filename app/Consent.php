@@ -13,4 +13,9 @@ class Consent extends Model
     {
         return $this->belongsTo(Student::class);
     }
+
+    public function fields()
+    {
+        return null;
+    }
 }

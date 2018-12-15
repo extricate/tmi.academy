@@ -30,6 +30,7 @@
         "@material/ripple": "^0.42.0",
         "i": "^0.3.6",
         "npm": "^6.4.1",
-        "vue-instantsearch": "^1.7.0"
+        "vue-instantsearch": "^1.7.0",
+        "vue-search-select": "^2.7.1"
     }
 }

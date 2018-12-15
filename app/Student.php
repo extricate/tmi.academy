@@ -40,11 +40,18 @@ class Student extends Model
         );
     }
 
-    public function consentEmail() {
+    public function prepareConsentEmailData()
+    {
+        $consent = $this->consentFields();
+        $consentExtra = $this->ministryConsentCheck();
 
+        $render = array_merge($consent, $consentExtra);
+
+        return $render;
     }
 
-    public function tmiConsentCheck() {
+    public function tmiConsentCheck()
+    {
         $consent = $this->consentFields();
 
         foreach ($consent as $element) {
@@ -56,12 +63,18 @@ class Student extends Model
         return true;
     }
 
-    public function ministryConsentCheck() {
-        $consent = $this->consent->only([
+    public function ministryConsentFields()
+    {
+        return $consent = $this->consent->only([
             'ministry_evaluation',
             'ministry_illustration',
             'ministry_website'
         ]);
+    }
+
+    public function ministryConsentCheck()
+    {
+        $consent = $this->ministryConsentFields();
 
         foreach ($consent as $element) {
             if ($element != true) {
