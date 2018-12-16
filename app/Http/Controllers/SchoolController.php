@@ -11,7 +11,7 @@ class SchoolController extends Controller
     public $schools;
 
     public function __construct() {
-        $this->middleware(['auth', 'admin'] );
+        $this->middleware(['auth', 'admin'])->except(['getSchools']);
         $this->schools = School::paginate(25);
     }
 
@@ -62,5 +62,11 @@ class SchoolController extends Controller
     public function destroy(School $school)
     {
         //
+    }
+
+    public function getSchools()
+    {
+        $schools = School::pluck('id', 'name');
+        return response()->json($schools);
     }
 }
