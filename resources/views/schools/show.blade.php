@@ -16,25 +16,31 @@
                                 <div class="card-body">
                                     {{ $student->name }}
                                     <div class="float-right">
-                                        @if($student->tmiConsentCheck())
+                                        @if($student->tmiConsentCheck() == 'full')
                                             <span class="badge badge-success badge-lg">
-                                            <i class="fal fa-check-circle"></i> Toestemming TMI
-                                        </span>
+                                            <i class="fal fa-check-circle"></i>
+                                        @elseif ($student->tmiConsentCheck() == "partial")
+                                            <span class="badge badge-warning badge-lg">
+                                            <i class="fal fa-tilde"></i>
                                         @else
                                             <span class="badge badge-danger badge-lg">
-                                            <i class="fal fa-times-circle"></i> Toestemming TMI
-                                        </span>
+                                            <i class="fal fa-times-circle"></i>
                                         @endif
+                                                Toestemming TMI
+                                        </span>
 
-                                        @if($student->ministryConsentCheck())
-                                            <span class="badge badge-success badge-lg">
-                                            <i class="fal fa-check-circle"></i> Toestemming Ministerie
-                                        </span>
+                                        @if($student->ministryConsentCheck() == 'full')
+                                           <span class="badge badge-success badge-lg">
+                                           <i class="fal fa-check-circle"></i>
+                                        @elseif ($student->ministryConsentCheck() == "partial")
+                                            <span class="badge badge-warning badge-lg">
+                                            <i class="fal fa-tilde"></i>
                                         @else
                                             <span class="badge badge-danger badge-lg">
-                                            <i class="fal fa-times-circle"></i> Toestemming Ministerie
-                                        </span>
+                                            <i class="fal fa-times-circle"></i>
                                         @endif
+                                            Toestemming Ministerie
+                                        </span>
 
                                         <a href="/studenten/{{ $student->id }}/edit" class="btn btn-primary btn-sm">
                                             <i class="fal fa-wrench"></i>

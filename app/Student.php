@@ -54,13 +54,7 @@ class Student extends Model
     {
         $consent = $this->consentFields();
 
-        foreach ($consent as $element) {
-            if ($element != true) {
-                return false;
-            }
-        }
-
-        return true;
+        return $this->checkConsent($consent);
     }
 
     public function ministryConsentFields()
@@ -76,12 +70,56 @@ class Student extends Model
     {
         $consent = $this->ministryConsentFields();
 
+        return $this->checkConsent($consent);
+        /*$check = [];
         foreach ($consent as $element) {
-            if ($element != true) {
-                return false;
+            if ($element == true) {
+                $check[] = true;
+            } else {
+                $check[] = false;
             }
         }
 
-        return true;
+        if (in_array(false, $check)) {
+            // array contains false, check if it contains true as well
+            if (in_array(true, $check)) {
+                // partial consent has been given
+                return 'partial';
+            };
+            // no consent has been given
+            return 'no';
+        }
+        // full consent has been given
+        return 'full';*/
+    }
+
+    /**
+     * Return either full, partial or no when it comes to consent.
+     *
+     * @param array $haystack
+     * @return string
+     */
+    public function checkConsent(Array $haystack)
+    {
+        $check = [];
+        foreach ($haystack as $element) {
+            if ($element == true) {
+                $check[] = true;
+            } else {
+                $check[] = false;
+            }
+        }
+
+        if (in_array(false, $check)) {
+            // array contains false, check if it contains true as well
+            if (in_array(true, $check)) {
+                // partial consent has been given
+                return 'partial';
+            };
+            // no consent has been given
+            return 'no';
+        }
+        // full consent has been given
+        return 'full';
     }
 }
