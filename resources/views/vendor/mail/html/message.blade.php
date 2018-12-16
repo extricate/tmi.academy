@@ -2,7 +2,7 @@
     {{-- Header --}}
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            <img src="{{ asset('assets/logo.svg') }}" alt="TMI.academy" title="TMI.academy" style="display:block; margin-left: auto; margin-right: auto;" width="200" height="200" data-auto-embed="attachment" />
+            <img src="{{ asset('assets/logo.svg') }}" alt="TMI.academy" title="TMI.academy" style="display:block; margin-left: auto; margin-right: auto;" width="120" height="120" data-auto-embed="attachment" />
         @endcomponent
     @endslot
 
