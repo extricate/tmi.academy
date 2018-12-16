@@ -35,11 +35,22 @@
                         </h2>
                         <div class="form-group">
                             {!! Form::label('school', 'De geporteretteerde persoon (deelnemer workshop, in veel gevallen uw kind) zit op:') !!}
-                            {!! Form::select('school_id', $schools, null, ['class' => 'form-control', 'placeholder' => 'Kies hier een school', 'required' => 'required']) !!}
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fal fa-graduation-cap fa-fw"></i></div>
+                                </div>
+                                {!! Form::select('school_id', $schools, null, ['class' => 'form-control', 'placeholder' => 'Kies hier een school', 'required' => 'required']) !!}
+                            </div>
+
                         </div>
                         <div class="form-group">
                             {!! Form::label('student_name', 'Ik geef toestemming namens') !!}
-                            {!! Form::text('student_name', null, ['class' => 'form-control', 'placeholder' => 'Typ hier de naam van het de geportretteerde persoon waar u toestemming voor wil registreren', 'required' => 'required']) !!}
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fal fa-child fa-fw"></i></div>
+                                </div>
+                                {!! Form::text('student_name', null, ['class' => 'form-control', 'placeholder' => 'Typ hier de naam van het de persoon waar u toestemming voor registreert', 'required' => 'required']) !!}
+                            </div>
                         </div>
                         <h2 class="mt-4">Toestemming</h2>
                         <div class="form-group">
